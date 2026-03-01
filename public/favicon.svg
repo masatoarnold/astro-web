@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" stroke="#000">
+    <g stroke-linecap="round" stroke-linejoin="round" stroke-width="8">
+        <path fill="none" d="M24 108V28l40 80 40-80v80" />
+        <path d="M48 36h32l8-16H40zm16 32-8-16h16z" />
+    </g>
+    <style>
+        @media (prefers-color-scheme:dark) {
+            svg {
+                stroke: #fff;
+                fill: #fff
+            }
+        }
+    </style>
+</svg>
