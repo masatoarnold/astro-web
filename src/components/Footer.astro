@@ -5,9 +5,10 @@ import BackToTop from "@components/BackToTop.astro";
 import MoonStar from "@lucide/astro/icons/moon-star";
 import Sun from "@lucide/astro/icons/sun";
 import MonitorCog from "@lucide/astro/icons/monitor-cog";
+import Link from "@components/Link.astro";
 ---
 
-<footer class="animate">
+<footer>
   <Container>
     <div class="relative">
       <div class="absolute -top-12 right-0">
@@ -15,7 +16,11 @@ import MonitorCog from "@lucide/astro/icons/monitor-cog";
       </div>
     </div>
     <div class="flex items-center justify-between">
-      <div>&copy; {new Date().getFullYear()} / {SITE.TITLE} 🌱🐈‍⬛</div>
+      <div>
+        &copy; {new Date().getFullYear()} Masato Arnold | <Link
+          href="./legal/copyright">Licensed under the EUPL</Link
+        >
+      </div>
       <div class="flex flex-wrap items-center gap-1.5">
         <button
           id="light-theme-button"

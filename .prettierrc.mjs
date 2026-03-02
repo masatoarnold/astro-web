@@ -4,7 +4,6 @@ export default {
   plugins: ["prettier-plugin-astro", "prettier-plugin-tailwindcss"],
   semi: true,
   tabWidth: 2,
-  useTabs: true,
   overrides: [
     {
       files: "*.astro",
