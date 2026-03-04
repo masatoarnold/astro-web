@@ -11,19 +11,19 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  markdown: {
-    shikiConfig: {
-      theme: "css-variables",
-    },
-  },
-  i18n: {
-    locales: ["de", "en"],
-    defaultLocale: "de",
-    fallback: {
-      en: "de",
-    },
-    routing: {
-      fallbackType: "rewrite",
-    },
-  },
+  // markdown: {
+  //   shikiConfig: {
+  //     theme: "css-variables",
+  //   },
+  // },
+  // i18n: {
+  //   locales: ["de", "en"],
+  //   defaultLocale: "de",
+  //   fallback: {
+  //     en: "de",
+  //   },
+  //   routing: {
+  //     fallbackType: "rewrite",
+  //   },
+  // },
 });

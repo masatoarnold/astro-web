@@ -1,3 +1,11 @@
+---
+title: "Copyright notice"
+description: "Copyright notice for this website"
+---
+
+The owner and creator of this site, Masato Arnold, licenses all content and software on this site under the [European Union Public License Version 1.2 (EUPL 1.2)](https://eupl.eu/).
+
+```
 EUROPEAN UNION PUBLIC LICENCE v. 1.2
 EUPL © the European Union 2007, 2016
 
@@ -285,3 +293,5 @@ Code from exclusive appropriation.
 
 All other changes or additions to this Appendix require the production of a new
 EUPL version.
+
+```

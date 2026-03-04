@@ -1,0 +1,28 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import Layout from "@layouts/Layout.astro";
+import Container from "@components/Container.astro";
+
+export async function getStaticPaths() {
+  const legal = await getCollection("legal");
+  return legal.map((post) => ({
+    params: { id: post.id },
+    props: post,
+  }));
+}
+type Props = CollectionEntry<"legal">;
+
+const legal = Astro.props;
+const { Content } = await render(legal);
+---
+
+<Layout title={legal.data.title} description={legal.data.description}>
+  <Container>
+    <h1 class="text-3xl font-semibold text-black dark:text-white">
+      {legal.data.title}
+    </h1>
+    <article>
+      <Content />
+    </article>
+  </Container>
+</Layout>
