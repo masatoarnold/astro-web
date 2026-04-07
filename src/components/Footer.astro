@@ -1,49 +1,58 @@
 ---
 import Container from "@components/Container.astro";
-import { SITE } from "@consts";
 import BackToTop from "@components/BackToTop.astro";
 import MoonStar from "@lucide/astro/icons/moon-star";
 import Sun from "@lucide/astro/icons/sun";
 import MonitorCog from "@lucide/astro/icons/monitor-cog";
 import Link from "@components/Link.astro";
+import RectButton from "@components/RectButton.astro";
+import Mail from "@lucide/astro/icons/mail";
+import Codeberg from "simple-icons-astro/Codeberg";
 ---
 
-<footer>
+<footer transition:persist>
   <Container>
     <div class="relative">
       <div class="absolute -top-12 right-0">
         <BackToTop />
       </div>
     </div>
-    <div class="flex items-center justify-between">
-      <div>
-        &copy; {new Date().getFullYear()} Masato Arnold | <Link
-          href="./legal/copyright">Licensed under the EUPL</Link
+    <div
+      class="flex flex-wrap-reverse items-center justify-between gap-4 border-y border-black/15 py-4 dark:border-white/20"
+    >
+      <div class="flex flex-nowrap items-center gap-1.5">
+        <RectButton
+          href="mailto:masato.arnold@protonmail.com"
+          aria-label="Email"
+        >
+          <Mail class="mr-2 size-4" />
+          Email
+        </RectButton>
+
+        <RectButton href="https://codeberg.org/masatoarnold">
+          <Codeberg class="mr-2 size-4" />
+          Codeberg
+        </RectButton>
+      </div>
+      <div class="flex flex-nowrap items-center justify-end gap-1.5">
+        <RectButton id="light-theme-button" aria-label="Light theme"
+          ><Sun class="size-4" /></RectButton
+        >
+
+        <RectButton id="dark-theme-button" aria-label="Dark theme"
+          ><MoonStar class="size-4" /></RectButton
+        >
+
+        <RectButton id="system-theme-button" aria-label="System theme"
+          ><MonitorCog class="size-4" /></RectButton
         >
       </div>
-      <div class="flex flex-wrap items-center gap-1.5">
-        <button
-          id="light-theme-button"
-          aria-label="Light theme"
-          class="group flex size-9 cursor-pointer items-center justify-center rounded-sm border border-black/15 hover:bg-black/5 focus-visible:bg-black/5 dark:border-white/20 dark:hover:bg-white/5 dark:focus-visible:bg-white/5"
-        >
-          <Sun class="h-4" />
-        </button>
-        <button
-          id="dark-theme-button"
-          aria-label="Dark theme"
-          class="group flex size-9 cursor-pointer items-center justify-center rounded-sm border border-black/15 hover:bg-black/5 focus-visible:bg-black/5 dark:border-white/20 dark:hover:bg-white/5 dark:focus-visible:bg-white/5"
-        >
-          <MoonStar class="h-4" />
-        </button>
-        <button
-          id="system-theme-button"
-          aria-label="System theme"
-          class="group flex size-9 cursor-pointer items-center justify-center rounded-sm border border-black/15 hover:bg-black/5 focus-visible:bg-black/5 dark:border-white/20 dark:hover:bg-white/5 dark:focus-visible:bg-white/5"
-        >
-          <MonitorCog class="h-4" />
-        </button>
-      </div>
+    </div>
+    <div class="mt-4 text-center">
+      &copy; {new Date().getFullYear()} Masato Arnold | <Link
+        href="./legal/copyright">Licensed under the EUPL</Link
+      >
+      <br />
     </div>
   </Container>
 </footer>

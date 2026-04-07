@@ -4,9 +4,10 @@ import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
 import { readingTime } from "@lib/utils";
-import BackToPrevious from "@components/BackToPrevious.astro";
 import PostNavigation from "@components/PostNavigation.astro";
 import TableOfContents from "@components/TableOfContents.astro";
+import RectButton from "@components/RectButton.astro";
+import ChevronLeft from "@lucide/astro/icons/chevron-left";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("blog"))
@@ -52,7 +53,10 @@ const { Content, headings } = await render(post);
 
 <Layout title={post.data.title} description={post.data.description}>
   <Container>
-    <BackToPrevious href="/blog">Back to blog</BackToPrevious>
+    <RectButton data-pagefind-ignore href="/blog" class="not-prose w-fit gap-1">
+      <ChevronLeft class="size-5" />
+      <div class="text-sm">Back to blog</div>
+    </RectButton>
     <div class="my-10 space-y-1">
       <div class="flex items-center gap-1.5">
         <div class="font-base text-sm">

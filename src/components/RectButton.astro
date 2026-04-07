@@ -1,0 +1,21 @@
+---
+import { twMerge } from "tailwind-merge";
+
+const { href = "", ...rest } = Astro.props;
+
+const { class: restClasses, ...restProps } = rest;
+const baseClasses =
+  "flex h-9 cursor-pointer items-center justify-center rounded-sm border border-black/15 p-2 transition-colors duration-300 ease-in-out hover:bg-black/5 hover:text-black focus-visible:bg-black/5 focus-visible:text-black dark:border-white/20 dark:hover:bg-white/5 dark:hover:text-white dark:focus-visible:bg-white/5 dark:focus-visible:text-white";
+---
+
+{
+  href != "" ? (
+    <a href={href} {...restProps} class={twMerge(baseClasses, restClasses)}>
+      <slot />
+    </a>
+  ) : (
+    <button {...restProps} class={twMerge(baseClasses, restClasses)}>
+      <slot />
+    </button>
+  )
+}

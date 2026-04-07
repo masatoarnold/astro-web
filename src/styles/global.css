@@ -65,7 +65,7 @@
   }
 
   main {
-    @apply flex-1 py-32;
+    @apply flex-1 pt-32 pb-32;
   }
 
   footer {
@@ -89,14 +89,6 @@
     @apply text-black dark:text-white;
     @apply decoration-black/50 dark:decoration-white/50;
   }
-}
-
-html #back-to-top {
-  @apply pointer-events-none opacity-0;
-}
-
-html.scrolled #back-to-top {
-  @apply pointer-events-auto opacity-100;
 }
 
 /* shiki config */

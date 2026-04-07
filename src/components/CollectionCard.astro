@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from "astro:content";
+import RectButton from "@components/RectButton.astro";
+
+import ChevronRight from "@lucide/astro/icons/chevron-right";
+type Props = {
+  entry: CollectionEntry<"blog"> | CollectionEntry<"projects">;
+};
+
+const { entry } = Astro.props as {
+  entry: CollectionEntry<"blog"> | CollectionEntry<"projects">;
+};
+---
+
+<RectButton
+  href={`/${entry.collection}/${entry.id}`}
+  class="not-prose rounded-lg px-4 py-8"
+>
+  <div class="flex flex-1 flex-col truncate">
+    <div class="font-semibold">
+      {entry.data.title}
+    </div>
+    <div class="text-sm">
+      {entry.data.description}
+    </div>
+  </div>
+  <ChevronRight class="size-5 shrink-0" />
+</RectButton>

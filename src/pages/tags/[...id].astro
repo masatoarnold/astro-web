@@ -2,8 +2,9 @@
 import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
-import ArrowCard from "@components/ArrowCard.astro";
-import BackToPrevious from "@components/BackToPrevious.astro";
+import CollectionCard from "@components/CollectionCard.astro";
+import RectButton from "@components/RectButton.astro";
+import ChevronLeft from "@lucide/astro/icons/chevron-left";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog", ({ data }) => !data.draft);
@@ -32,12 +33,19 @@ const sortedPosts = posts.sort(
 <Layout title={`Tag: ${id}`} description={`Posts with the tag: ${id}`}>
   <Container>
     <div class="space-y-10" data-pagefind-ignore>
-      <BackToPrevious href="/tags"> All tags </BackToPrevious>
+      <RectButton
+        data-pagefind-ignore
+        href="/tags"
+        class="not-prose w-fit gap-1"
+      >
+        <ChevronLeft class="size-5" />
+        <div class="text-sm">All tags</div>
+      </RectButton>
       <h1 class="font-semibold text-black dark:text-white">
         Posts tagged with "{id}"
       </h1>
       <ul class="flex flex-col gap-4">
-        {sortedPosts.map((post) => <ArrowCard entry={post} />)}
+        {sortedPosts.map((post) => <CollectionCard entry={post} />)}
       </ul>
     </div>
   </Container>

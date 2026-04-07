@@ -3,8 +3,9 @@ import { type CollectionEntry, getCollection, render } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
 import FormattedDate from "@components/FormattedDate.astro";
-import BackToPrevious from "@components/BackToPrevious.astro";
 import Link from "@components/Link.astro";
+import RectButton from "@components/RectButton.astro";
+import ChevronLeft from "@lucide/astro/icons/chevron-left";
 
 export async function getStaticPaths() {
   const projects = (await getCollection("projects"))
@@ -18,14 +19,19 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"projects">;
 
 const project = Astro.props;
-const { Content, headings } = await render(project);
+const { Content } = await render(project);
 ---
 
 <Layout title={project.data.title} description={project.data.description}>
   <Container>
-    <div>
-      <BackToPrevious href="/projects">Back to projects</BackToPrevious>
-    </div>
+    <RectButton
+      data-pagefind-ignore
+      href="/projects"
+      class="not-prose w-fit gap-1"
+    >
+      <ChevronLeft class="size-5" />
+      <div class="text-sm">Back to projects</div>
+    </RectButton>
     <div class="my-10 space-y-1">
       <div class="font-base text-sm">
         <FormattedDate date={project.data.date} />

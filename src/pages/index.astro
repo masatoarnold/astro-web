@@ -1,12 +1,14 @@
 ---
+import { SITE } from "@consts";
 import Layout from "@layouts/Layout.astro";
 import Container from "@components/Container.astro";
-import { SITE, HOME, SOCIALS } from "@consts";
-import ArrowCard from "@components/ArrowCard.astro";
+import CollectionCard from "@components/CollectionCard.astro";
 import Link from "@components/Link.astro";
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import Introduction from "./_introduction.mdx";
+import Mail from "@lucide/astro/icons/mail";
+import Codeberg from "simple-icons-astro/Codeberg";
 
 const blog = (await getCollection("blog"))
   .filter((post) => !post.data.draft)
@@ -21,89 +23,65 @@ const projects: CollectionEntry<"projects">[] = (
   .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
 ---
 
-<Layout title={HOME.TITLE} description={HOME.DESCRIPTION}>
+<Layout>
   <Container>
-    <aside data-pagefind-ignore>
-      <h1 class="font-semibold text-black dark:text-white">Masato Arnold 🌱</h1>
-      <div class="space-y-16">
-        <section>
-          <article class="space-y-4">
-            <Introduction />
-          </article>
-        </section>
+    <div class="space-y-16" data-pagefind-ignore>
+      <section>
+        <h1 class="text-xl font-semibold text-black dark:text-white">
+          Hi there 👋
+        </h1>
+        <article>
+          <Introduction />
+        </article>
 
-        <section class="space-y-6">
-          <div class="flex flex-wrap items-center justify-between gap-y-2">
-            <h2 class="font-semibold text-black dark:text-white">
-              Latest posts
-            </h2>
-            <Link href="/blog"> See all posts </Link>
-          </div>
-          <ul class="not-prose flex flex-col gap-4">
-            {
-              blog.map((post) => (
-                <li>
-                  <ArrowCard entry={post} />
-                </li>
-              ))
-            }
-          </ul>
-        </section>
+        <div class="flex items-center font-semibold">
+          <Mail class="mr-2 size-4" />
+          <Link href="mailto:masato.arnold@protonmail.com"
+            >masato.arnold@protonmail.com</Link
+          >
+        </div>
 
-        <section class="space-y-6">
-          <div class="flex flex-wrap items-center justify-between gap-y-2">
-            <h2 class="font-semibold text-black dark:text-white">
-              Recent projects
-            </h2>
-            <Link href="/projects"> See all projects </Link>
-          </div>
-          <ul class="not-prose flex flex-col gap-4">
-            {
-              projects.map((project) => (
-                <li>
-                  <ArrowCard entry={project} />
-                </li>
-              ))
-            }
-          </ul>
-        </section>
+        <div class="flex items-center font-semibold">
+          <Codeberg class="mr-2 size-4" />
+          <Link href="https://codeberg.org/masatoarnold"
+            >https://codeberg.org/masatoarnold</Link
+          >
+        </div>
+      </section>
 
-        <section class="space-y-4">
+      <section class="space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-y-2">
+          <h2 class="font-semibold text-black dark:text-white">Latest posts</h2>
+          <Link href="/blog"> See all posts </Link>
+        </div>
+        <ul class="not-prose flex flex-col gap-4">
+          {
+            blog.map((post) => (
+              <li>
+                <CollectionCard entry={post} />
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <section class="space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-y-2">
           <h2 class="font-semibold text-black dark:text-white">
-            Let's Connect
+            Recent projects
           </h2>
-          <article>
-            <p>
-              If you want to get in touch with me about something or just to say
-              hi, reach out on social media or send me an email.
-            </p>
-          </article>
-          <ul class="not-prose flex flex-wrap gap-2">
-            {
-              SOCIALS.map((SOCIAL) => (
-                <li class="flex gap-x-2 text-nowrap">
-                  <Link
-                    href={SOCIAL.HREF}
-                    external
-                    aria-label={`${SITE.TITLE} on ${SOCIAL.NAME}`}
-                  >
-                    {SOCIAL.NAME}
-                  </Link>
-                  {"/"}
-                </li>
-              ))
-            }
-            <li class="line-clamp-1">
-              <Link
-                href={`mailto:${SITE.EMAIL}`}
-                aria-label={`Email ${SITE.TITLE}`}
-              >
-                {SITE.EMAIL}
-              </Link>
-            </li>
-          </ul>
-        </section>
-      </div>
-    </aside>
+          <Link href="/projects"> See all projects </Link>
+        </div>
+        <ul class="not-prose flex flex-col gap-4">
+          {
+            projects.map((project) => (
+              <li>
+                <CollectionCard entry={project} />
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </div>
   </Container>
 </Layout>
